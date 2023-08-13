@@ -14,7 +14,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Parse event data from PR body
-        uses: peter-murray/issue-body-parse-action@v2
+        uses: peter-murray/issue-body-parser-action@v2
         id: event_parser
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

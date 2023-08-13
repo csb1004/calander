@@ -14,7 +14,11 @@ on:
       body:
         type: string
         required: true
-      
+        
+      year:
+        type: number
+        required: true
+        
       event:
         type: string
         required: true

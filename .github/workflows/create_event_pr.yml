@@ -47,8 +47,6 @@ jobs:
           commit-message: "[일정 추가] ${{ github.event.inputs.title }}"
           title: "[일정 추가] ${{ github.event.inputs.title }}" 
           body: |
-          ${{ github.event.inputs.body }}
-          
           ``````json
           ${{toJSON({"event":github.event.inputs.event})}}
           ``````

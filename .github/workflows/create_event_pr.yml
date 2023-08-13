@@ -51,7 +51,7 @@ jobs:
 
             일정 데이터:
             ````json event_data
-            {"year":${{ github.event.inputs.year }},"month":${{ github.event.inputs.month }},"day":${{ github.event.inputs.day }},"event":${{toJSON(github.event.inputs.event)}}}
+            {"committer":${{ github.event.inputs.committer }},"email":${{ github.event.inputs.email }},"year":${{ github.event.inputs.year }},"month":${{ github.event.inputs.month }},"day":${{ github.event.inputs.day }},"event":${{toJSON(github.event.inputs.event)}}}
             ````
           labels: 일정 요청(자동)
           branch: event-request

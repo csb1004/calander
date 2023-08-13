@@ -50,4 +50,6 @@ jobs:
           labels: 일정 요청(자동)
           branch: event-request
           branch-suffix: random
-          author: ""
+          author: 
+          committer: ${{ github.event.inputs.committer }} <${{ github.event.inputs.email }}>
+          delete-branch: true

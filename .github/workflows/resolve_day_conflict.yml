@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day')
     steps:
+      - name: Check out branch
+        uses: actions/checkout@v3
       - name: Remove requested event by resetting to main branch 
         run: git fetch --all && git reset --hard origin/main
       - name: Install Python

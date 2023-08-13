@@ -36,4 +36,4 @@ jobs:
         with:
           default_author: github_actor
           message: "Resolve conflict"
-          push: true
+          push: --force

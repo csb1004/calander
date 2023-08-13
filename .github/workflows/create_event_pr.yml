@@ -48,8 +48,9 @@ jobs:
           title: "[일정 추가] ${{ github.event.inputs.title }}" 
           body: |-
             ${{ github.event.inputs.body }}
+            
             ````json
-            ${{toJSON({"event":github.event.inputs.event})}}
+            {"year":${{ github.event.inputs.year }},"month":${{ github.event.inputs.month }},"day":${{ github.event.inputs.day }},"event":'${{toJSON(github.event.inputs.event)}}'}
             ````
           labels: 일정 요청(자동)
           branch: event-request

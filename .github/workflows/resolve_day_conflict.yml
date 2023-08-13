@@ -24,7 +24,7 @@ jobs:
           payload_marker: event_data
       - name: Add requested event
         if : steps.event_parser.outputs.payload != 'NOT_FOUND'
-        run: python cli_db.py push ${{ fromJSON(steps.event_parser.outputs.payload).year }} ${{ fromJSON(steps.event_parser.outputs.payload).month }} ${{ fromJSON(steps.event_parser.outputs.payload).day }} ${{ fromJSON(steps.event_parser.outputs.payload).event }}
+        run: python cli_db.py push ${{ fromJSON(steps.event_parser.outputs.payload).year }} ${{ fromJSON(steps.event_parser.outputs.payload).month }} ${{ fromJSON(steps.event_parser.outputs.payload).day }} '${{ fromJSON(steps.event_parser.outputs.payload).event }}'
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:

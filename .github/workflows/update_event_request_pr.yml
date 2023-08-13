@@ -34,6 +34,9 @@ jobs:
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          default_author: github_actions
+          author_name: ${{ fromJSON(steps.event_parser.outputs.payload).committer }}
+          author_email: ${{ fromJSON(steps.event_parser.outputs.payload).email }}
+          committer_name: ${{ fromJSON(steps.event_parser.outputs.payload).committer }}
+          committer_email: ${{ fromJSON(steps.event_parser.outputs.payload).email }}
           message: "[일정 추가] ${{ fromJSON(fromJSON(steps.event_parser.outputs.payload).event).name }}"
           push: --force

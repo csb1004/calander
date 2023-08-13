@@ -18,6 +18,12 @@ on:
       year:
         type: number
         required: true
+      month:
+        type: number
+        required: true
+      day:
+        type: number
+        required: true
         
       event:
         type: string

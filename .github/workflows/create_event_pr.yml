@@ -46,10 +46,11 @@ jobs:
           committer: ${{ github.event.inputs.committer }} <${{ github.event.inputs.email }}>
           commit-message: "[일정 추가] ${{ github.event.inputs.title }}"
           title: "[일정 추가] ${{ github.event.inputs.title }}" 
-          body: |
-          ``````json
+          body: |-
+           ${{ github.event.inputs.body }}
+           ```json
           ${{toJSON({"event":github.event.inputs.event})}}
-          ``````
+          ```
           labels: 일정 요청(자동)
           branch: event-request
           branch-suffix: random

@@ -49,9 +49,9 @@ jobs:
           body: |
           ${{ github.event.inputs.body }}
           
-          ```json
+          ``````json
           ${{toJSON({"event":github.event.inputs.event})}}
-          ```
+          ``````
           labels: 일정 요청(자동)
           branch: event-request
           branch-suffix: random

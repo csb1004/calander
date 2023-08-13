@@ -5,7 +5,7 @@ on:
 jobs:
   Solve-Conflict:
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day')
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day') && contains(github.event.issue.labels.*.name, '일정 요청(자동)')
     steps:
       - name: Check out branch
         uses: actions/checkout@v3

@@ -1,4 +1,6 @@
 name: Resolve Same Day Conflict
+env:
+    GH_TOKEN: ${{ github.token }}
 on:
   issue_comment:
     types: [created]

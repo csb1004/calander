@@ -2,7 +2,7 @@ name: Create Event Pull Request
 on:
   workflow_dispatch:
     inputs:
-      author:
+      committer:
         type: string
         required: true
       email:
@@ -43,10 +43,11 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:
-          committer: ${{ github.event.inputs.author }} <${{ github.event.inputs.email }}>
+          committer: ${{ github.event.inputs.committer }} <${{ github.event.inputs.email }}>
           commit-message: "[일정 추가] ${{ github.event.inputs.title }}"
           title: "[자동 일정 추가] ${{ github.event.inputs.title }}" 
           body: ${{ github.event.inputs.body }}
           labels: 일정 요청(자동)
           branch: event-request
           branch-suffix: random
+          author: ""

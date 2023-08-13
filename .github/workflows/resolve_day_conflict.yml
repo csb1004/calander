@@ -7,10 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day') && contains(github.event.pull_request.labels.*.name, '일정 요청(자동)')
     steps:
-      - name: Remove requested event by checking out main branch 
-        uses: actions/checkout@v3
-        with:
-          ref: "main"
+      - name: Remove requested event by resetting to main branch 
+        run: git fetch --all && git reset --hard origin/main
       - name: Install Python
         uses: actions/setup-python@v4
         with:

@@ -44,8 +44,8 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           committer: ${{ github.event.inputs.author }} <${{ github.event.inputs.email }}>
-          commit-message: [일정 요청] ${{ github.event.inputs.title }}
-          title: [자동 일정 추가] ${{ github.event.inputs.title }}
+          commit-message: "[일정 요청] ${{ github.event.inputs.title }}"
+          title: "[자동 일정 추가] ${{ github.event.inputs.title }}"
           body: ${{ github.event.inputs.body }}
           labels: 일정 요청(자동)
           branch: event-request

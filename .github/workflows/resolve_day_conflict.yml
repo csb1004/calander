@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Check out branch
         uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref_name }}
       - name: Remove requested event by resetting to main branch 
         run: git fetch --all && git reset --hard origin/main
       - name: Install Python

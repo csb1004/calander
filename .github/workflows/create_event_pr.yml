@@ -3,22 +3,30 @@ on:
   workflow_dispatch:
     inputs:
       author:
+        type: string
         required: true
       email:
+        type: string
         required: true
       title:
+        type: string
         required: true
       body:
+        type: string
         required: true
       
       year:
+        type: number
         required: true
       month:
+        type: number
         required: true
       day:
+        type: number
         required: true
       
       event:
+        type: string
         required: true
 jobs:
   Create-Event-PR:

@@ -39,7 +39,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Add Event
-        run: python add_event_cli.py ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.year }} ${{ toJSON(github.event.inputs.event) }}
+        run: python add_event_cli.py ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }} ${{ toJSON(github.event.inputs.event) }}
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
         with:

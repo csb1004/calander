@@ -1,4 +1,4 @@
-name: Resolve Same Day Conflict
+name: Update Event Request PR
 env:
     GH_TOKEN: ${{ github.token }}
 on:

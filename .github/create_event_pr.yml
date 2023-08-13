@@ -1,0 +1,44 @@
+name: Create Event Pull Request
+on:
+  workflow_dispatch:
+    inputs:
+      author:
+        required: true
+      email:
+        required: true
+      title:
+        required: true
+      body:
+        required: true
+      
+      year:
+        required: true
+      month:
+        required: true
+      day:
+        required: true
+      
+      event:
+        required: true
+jobs:
+  Create-Event-PR:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Add Event
+        run: python add_event_cli.py ${{ github.event.inputs.year }} ${{ github.event.inputs.month }} ${{ github.event.inputs.day }}  ${{ github.event.inputs.event }}
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          committer: ${{ github.event.inputs.author }} <${{ github.event.inputs.email }}>
+          commit-message: [일정 요청] ${{ github.event.inputs.title }}
+          title: [일정 요청] ${{ github.event.inputs.title }}
+          body: ${{ github.event.inputs.body }}
+          labels: 일정 요청(자동)
+          branch: event-request
+          branch-suffix: random

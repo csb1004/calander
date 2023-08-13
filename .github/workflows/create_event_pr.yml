@@ -14,9 +14,6 @@ on:
       body:
         type: string
         required: true
-      year:
-        type: number
-        required: true
       month:
         type: number
         required: true

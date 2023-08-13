@@ -5,9 +5,23 @@ on:
 jobs:
   Solve-Conflict:
     runs-on: ubuntu-latest
-    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day')
+    if: github.event.issue.pull_request != '' && contains(github.event.comment.body, '/resolve_day') && contains(github.event.pull_request.labels.*.name, "일정 요청(자동)")
     steps:
-      - name: Check out main branch
+      - name: Remove requested event by checking out main branch 
         uses: actions/checkout@v3
         with:
           ref: "main"
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Parse event data from PR body
+        uses: peter-murray/issue-body-parse-action@v2
+        id: event_parser
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_id: ${{ github.event.issue.number }}
+          payload_marker: event_data
+      - name: Add requested event
+        if : steps.event_parser.outputs.payload != 'NOT_FOUND'
+        run: python cli_db.py push ${{ fromJSON(event_parser.outputs.payload).year }} ${{ fromJSON(event_parser.outputs.payload).month }} ${{ fromJSON(event_parser.outputs.payload).day }} ${{ fromJSON(event_parser.outputs.payload).event }}
